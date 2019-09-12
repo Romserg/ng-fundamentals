@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IEvent } from './shared';
 
 @Component({
   selector: 'app-event-thumbnail',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
       <h2>{{event?.name}}</h2>
       <div>Date: {{event?.date}}</div>
-      <div [ngSwitch]="event?.time">
+      <div [ngSwitch]="event?.time" [ngClass]="getStartTimeStyle()">
         Time: {{event?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
@@ -23,6 +24,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     </div>
   `,
   styles: [`
+      .orange {
+          color: #F97924 !important;
+      }
+
+      .bold {
+          font-weight: bold;
+      }
+
       .pad-left {
           margin-left: 10px;
       }
@@ -38,5 +47,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 
 export class EventThumbnailComponent {
-  @Input() event: any;
+  @Input() event: IEvent;
+
+  getStartTimeStyle(): any {
+    if (this.event && this.event.time === '8:00 am') {
+      return 'orange bold';
+    }
+    return '';
+  }
 }
