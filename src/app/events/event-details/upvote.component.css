@@ -4,13 +4,16 @@
 
 .votingWidget {
     height: 64px;
-    padding-top: 7px;
+    padding: 0;
     border-radius: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .votingButton {
-    margin-left: -7px;
-    margin-top: 1px;
+    display: flex;
     cursor: pointer;
 }
 
@@ -19,13 +22,12 @@
 }
 
 .badge-inverse {
+    display: flex;
     background-color: #fff;
     color: #4e5d6c;
 }
 
 .votingCount {
-    margin-left: -11px;
-    margin-top: -1px;
     font-weight: bold;
     font-size: 14px;
 }
