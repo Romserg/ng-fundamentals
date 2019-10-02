@@ -7,7 +7,7 @@ export class AuthService {
 
   loginUser(userName: string, password: string) {
     this.currentUser = {
-      id: 1,
+      id: Math.random(),
       userName: userName,
       firstName: 'John',
       lastName: 'Walker'
