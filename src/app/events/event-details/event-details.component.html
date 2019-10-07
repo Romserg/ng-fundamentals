@@ -54,7 +54,8 @@
       <a (click)="addSession()">Add Session</a>
     </div>
   </div>
-  <app-session-list [sortBy]="sortBy"
+  <app-session-list [eventId]="event?.id"
+                    [sortBy]="sortBy"
                     [filterBy]="filterBy"
                     *ngIf="!addMode"
                     [sessions]="event?.sessions"></app-session-list>
