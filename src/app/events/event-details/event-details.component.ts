@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IEvent, EventService, ISession } from '../shared';
 
 @Component({
@@ -24,13 +24,17 @@ export class EventDetailsComponent implements OnInit {
   filterBy = 'all';
   sortBy = 'votes';
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) {
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
-      this.addMode = false;
+    this.route.data.forEach((data) => {
+      if (data.event === null) {
+        this.router.navigate(['404']);
+      } else {
+        this.event = data['event'];
+        this.addMode = false;
+      }
     });
   }
 
