@@ -1,6 +1,6 @@
 import { VoterService } from './voter.service';
 import { ISession } from '../shared';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('VoterService', () => {
 
@@ -36,7 +36,7 @@ describe('VoterService', () => {
   describe('addVoter', () => {
     it('should call http.post with the right URL', () => {
       const sessions = {id: 6, voters: ['john']};
-      mockHttp.post.and.returnValue(of(true));
+      mockHttp.post.and.returnValue(of(false));
 
       voterService.addVoter(3, <ISession>sessions, 'joe');
 
