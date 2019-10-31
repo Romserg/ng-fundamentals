@@ -3,7 +3,8 @@ import { ISession } from '../shared';
 
 describe('Session List Component', () => {
   let component: SessionListComponent;
-  let mockAuthService, mockVoterService;
+  const mockAuthService = undefined;
+  const mockVoterService = undefined;
 
   beforeEach(() => {
     component = new SessionListComponent(mockAuthService, mockVoterService);
